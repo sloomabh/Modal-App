@@ -5,7 +5,8 @@ const btnOpenModel = document.querySelectorAll('.show-modal');
 
 console.log(btnOpenModel);
 
-const openModal = function () {
+const openModal = function (e) {
+  e.preventDefault();
   console.log('Button clicked');
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
@@ -16,8 +17,8 @@ const closeModal = function () {
   overlay.classList.add('hidden');
 };
 
-for (let i = 0; i < btnOpenModel.length; i++)
-  btnOpenModel[i].addEventListener('click', openModal);
+// Nodelist is not am Array but it still have some methodes of array like Foreach
+btnOpenModel.forEach(btn => btn.addEventListener('click', openModal));
 
 btnCloseModel.addEventListener('click', closeModal);
 
